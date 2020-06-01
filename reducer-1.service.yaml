@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: reducer-1
+spec:
+  selector:
+    app: reducer-1
+  ports:
+  - port: 3000
+    targetPort: mr-port
