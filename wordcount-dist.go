@@ -37,8 +37,8 @@ func (w *WordCount) Map(in <-chan interface{}, out chan<- interface{}) {
 	for k, v := range counts {
 		bs, err := json.Marshal(Count{k, v})
 		if err != nil {
-			log.Println(err)
-			continue
+			log.Panic(err)
+
 		}
 		out <- bs
 	}
@@ -51,8 +51,7 @@ func (w *WordCount) Partition(in <-chan interface{}, outs []chan interface{}, wg
 		bs := elem.([]byte)
 		ct := Count{}
 		if err := json.Unmarshal(bs, &ct); err != nil {
-			log.Println(err)
-			continue
+			log.Panic(err)
 		}
 
 		key := ct.Key
@@ -76,7 +75,9 @@ func (w *WordCount) Reduce(in <-chan interface{}, out chan<- interface{}, wg *sy
 	for elem := range in {
 		bs := elem.([]byte)
 		ct := Count{}
-		json.Unmarshal(bs, &ct)
+		if err := json.Unmarshal(bs, &ct); err != nil {
+			log.Panic(err)
+		}
 		counts[ct.Key] += ct.Value
 	}
 
