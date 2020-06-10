@@ -8,6 +8,6 @@ WORKDIR /src
 COPY . ./
 
 #RUN go build -o /app/gomr
-COPY wordcount-dist /app/gomr
+COPY wordcount /app/wordcount
 
-ENTRYPOINT ["/app/gomr"]
+ENTRYPOINT ["/app/wordcount"]

@@ -2,12 +2,12 @@ apiVersion: skaffold/v1beta15
 kind: Config
 build:
   artifacts:
-  - image: gomr
-    context: .
+  - image: wordcount
+    context: ./jobs/wordcount
   tagPolicy:
     sha256: {}
-deploy:
-  kubectl:
-    manifests:
-    - ./*.job.yaml
-    - ./*.service.yaml
+#deploy:
+#  kubectl:
+#    manifests:
+#    - ./*.job.yaml
+#    - ./*.service.yaml

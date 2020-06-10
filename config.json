@@ -1,7 +1,0 @@
-{
-    "reducers" : [
-        "reducer-1:3000",
-        "reducer-2:3000"
-    ],
-    "nmappers" : 4
-}
