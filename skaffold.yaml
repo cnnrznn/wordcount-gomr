@@ -6,8 +6,3 @@ build:
     context: ./jobs/wordcount
   tagPolicy:
     sha256: {}
-#deploy:
-#  kubectl:
-#    manifests:
-#    - ./*.job.yaml
-#    - ./*.service.yaml
